@@ -1,0 +1,10 @@
+FROM node:20-alpine
+WORKDIR /app
+COPY package.json ./
+RUN npm install
+COPY nuxt.config.ts ./
+COPY app.vue ./
+EXPOSE 3000
+ENV NUXT_HOST=0.0.0.0
+ENV NUXT_PORT=3000
+CMD ["npx", "nuxt", "dev", "--host", "0.0.0.0", "--port", "3000"]
